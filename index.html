@@ -3,6 +3,7 @@
     <head>
         <title>Recherche Stage</title>
         <meta name="author" content="Mohamed, Milo, Lylian, Clément, Antoinne">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="src/javascript/script.js"></script>
         <link rel="stylesheet" href="src/css/style.css"/>
         <link rel="icon" href="assets/tabLogo.png"/>
@@ -11,24 +12,28 @@
     <body>
         <p id="titre">Recherche Stage</p>
 
-        <div id="searchZone">
-            <select id="filter">
-                <option value="activite">Domaine d'activité</option>
-                <option value="taille">Taille d'entreprise</option>
-                <option value="region">Région</option>
-            </select>
+        <div class="main">
+            <div id="searchZone">
+                <select id="filter">
+                    <option value="activite">Domaine d'activité</option>
+                    <option value="taille">Taille d'entreprise</option>
+                    <option value="region">Région</option>
+                </select>
 
-            <input type="search" id="query" placeholder="Rechercher...">
-        </div>
+                <input type="search" id="query" placeholder="Rechercher...">
+            </div>
 
-        <div id="result">
-            <template id="entrepriseTemplate">
-                <p>Nom : <span id="nom_complet"></span></p>
-                <p>Numero SIREN : <span id="siren"></span></p>
-                <p>Taille : <span id="categorie_entreprise"></span></p>
-                <p>Activité principale : <span id="activite_principale"></span></p>
-                <p>Date de création : <span id="date_creation"></span></p>
-            </template>
+            <div id="result">
+                <template id="entrepriseTemplate">
+                    <div class="card">
+                        <p>Nom : <span id="nom_complet"></span></p>
+                        <p>Numero SIREN : <span id="siren"></span></p>
+                        <p>Taille : <span id="categorie_entreprise"></span></p>
+                        <p>Activité principale : <span id="activite_principale"></span></p>
+                        <p>Date de création : <span id="date_creation"></span></p>
+                    </div>
+                </template>
+            </div>
         </div>
     </body>
 </html>

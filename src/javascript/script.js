@@ -1,5 +1,11 @@
 let url = 'url';
 
+const tailles = {
+  GE: "Grande Entreprise",
+  ETI: "Entreprise de Taille Intermédiaire",
+  MPE: "Micro Petite Entreprise"
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const filter = document.getElementById('filter');
     const query = document.getElementById('query');
@@ -49,7 +55,12 @@ async function fetchEntreprise(filterValue, queryText) {
   const entrepriseList = jsonData.results || [];
 
   if (entrepriseList.length === 0) {
-    alert("Aucune entreprise trouvée !");
+    const message = document.createElement('p');
+    message.textContent = "Aucune entreprise trouvée.";
+    message.style.fontWeight = 'bold';
+    message.style.textAlign = 'center';
+    message.style.marginTop = '2rem';
+    container.appendChild(message);
     return;
   }
 
@@ -58,7 +69,7 @@ async function fetchEntreprise(filterValue, queryText) {
 
     clone.getElementById("nom_complet").textContent = entreprise.nom_complet || "N/A";
     clone.getElementById("siren").textContent = entreprise.siren || "N/A";
-    clone.getElementById("categorie_entreprise").textContent = entreprise.categorie_entreprise || "N/A";
+    clone.getElementById("categorie_entreprise").textContent = tailles[entreprise.categorie_entreprise] || "N/A";
     clone.getElementById("activite_principale").textContent = entreprise.activite_principale || "N/A";
     clone.getElementById("date_creation").textContent = entreprise.date_creation || "N/A";
 
