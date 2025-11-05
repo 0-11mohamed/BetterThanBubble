@@ -29,7 +29,7 @@ function editURL(filterValue, queryText) {
       url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&categorie_entreprise=' + queryText.trim(); break;
       
     case 'region':
-      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10' + queryText.trim(); break;
+      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&region=' + queryText.trim(); break;
     /*https://recherche-entreprises.api.gouv.fr/search?region=[region]&categorie_entreprise=[taille]&section_activite_principale=[activite]&page=[page]&per_page=[per_page]*/
     default:
       url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10';
@@ -40,7 +40,6 @@ async function fetchEntreprise(filterValue, queryText) {
   const container = document.getElementById("result");
   const template = document.getElementById("entrepriseTemplate");
 
-  // Nettoyer les anciens résultats (sans supprimer le template)
   Array.from(container.children).forEach(child => {
     if (child.tagName.toLowerCase() !== 'template') {
       child.remove();
