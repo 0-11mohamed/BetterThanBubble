@@ -3,6 +3,7 @@
     <head>
         <title>Recherche Stage</title>
         <meta name="author" content="Mohamed, Milo, Lylian, Clément, Antoinne">
+        <script src="src/javascript/script.js"></script>
         <link rel="stylesheet" href="src/css/style.css"/>
         <link rel="icon" href="assets/tabLogo.png"/>
     </head>
@@ -20,6 +21,14 @@
             <input type="search" id="query" placeholder="Rechercher...">
         </div>
 
-        <script src="src/javascript/script.js"></script>
+        <div id="result">
+            <template id="entrepriseTemplate">
+                <p>Nom : <span id="nom_complet"></span></p>
+                <p>Numero SIREN : <span id="siren"></span></p>
+                <p>Taille : <span id="categorie_entreprise"></span></p>
+                <p>Activité principale : <span id="activite_principale"></span></p>
+                <p>Date de création : <span id="date_creation"></span></p>
+            </template>
+        </div>
     </body>
 </html>

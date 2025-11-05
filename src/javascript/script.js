@@ -6,15 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     query.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        event.preventDefault();
-
         const filterValue = filter.value;
         const queryText = query.value;
 
-        console.log("Filtre :", filterValue);
-        console.log("Texte :", queryText);
-
-        editURL(filterValue, queryText);
+        fetchEntreprise(filterValue, queryText);
     }
     });
 });
@@ -22,15 +17,53 @@ document.addEventListener('DOMContentLoaded', () => {
 function editURL(filterValue, queryText) {
   switch (filterValue) {
     case 'activite':
-      url = 'https://anime-db.p.rapidapi.com/anime?page=1&size=20&search=' + queryText.trim() + '&sortBy=ranking&sortOrder=asc';  break;
+      url = 'https://recherche-entreprises.api.gouv.fr/search?age=1&per_page=10&section_activite_principale=' + queryText.trim();  break;
 
     case 'taille':
-      url = 'https://anime-db.p.rapidapi.com/anime/by-id/' + parseInt(queryText, 10); break;
+      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&categorie_entreprise=' + queryText.trim(); break;
       
     case 'region':
-      url = 'https://anime-db.p.rapidapi.com/anime/by-ranking/' + queryText; break;
+      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10' + queryText.trim(); break;
     /*https://recherche-entreprises.api.gouv.fr/search?region=[region]&categorie_entreprise=[taille]&section_activite_principale=[activite]&page=[page]&per_page=[per_page]*/
     default:
       url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10';
   }
 }
+
+async function fetchEntreprise(filterValue, queryText) {
+  const container = document.getElementById("result");
+  const template = document.getElementById("entrepriseTemplate");
+
+  // Nettoyer les anciens résultats (sans supprimer le template)
+  Array.from(container.children).forEach(child => {
+    if (child.tagName.toLowerCase() !== 'template') {
+      child.remove();
+    }
+  });
+
+  editURL(filterValue, queryText);
+
+  const response = await fetch(url);
+  const jsonData = await response.json();
+
+  const entrepriseList = jsonData.results || [];
+
+  if (entrepriseList.length === 0) {
+    alert("Aucune entreprise trouvée !");
+    return;
+  }
+
+  entrepriseList.forEach(entreprise => {
+    const clone = template.content.cloneNode(true);
+
+    clone.getElementById("nom_complet").textContent = entreprise.nom_complet || "N/A";
+    clone.getElementById("siren").textContent = entreprise.siren || "N/A";
+    clone.getElementById("categorie_entreprise").textContent = entreprise.categorie_entreprise || "N/A";
+    clone.getElementById("activite_principale").textContent = entreprise.activite_principale || "N/A";
+    clone.getElementById("date_creation").textContent = entreprise.date_creation || "N/A";
+
+    container.appendChild(clone);
+  });
+}
+
+
