@@ -1,5 +1,12 @@
 let url = 'url';
 
+const elements = {
+  filter: null,
+  query: null,
+  container: null,
+  radios: null
+};
+
 const tailles = {
   GE: "Grande Entreprise",
   ETI: "Entreprise de Taille Intermédiaire",
@@ -7,33 +14,47 @@ const tailles = {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    const filter = document.getElementById('filter');
-    const query = document.getElementById('query');
-
-    query.addEventListener('keydown', (event) => {
+  elements.filter = document.getElementById('filter');
+  elements.query = document.getElementById('query');
+  elements.container = document.getElementById('result');
+  elements.radios = document.querySelectorAll('input[name="taille"]');
+  
+  elements.query.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
-        const filterValue = filter.value;
-        const queryText = query.value;
-
-        fetchEntreprise(filterValue, queryText);
+      const checkedRadio = document.querySelector('input[name="taille"]:checked');
+      const sizeValue = checkedRadio ? checkedRadio.value : null;
+      const filterValue = elements.filter.value;
+      const queryText = elements.query.value.trim();
+      
+      console.log("Taille:", sizeValue, "Filtre:", filterValue, "Recherche:", queryText);
+      
+      fetchEntreprise(filterValue, queryText, sizeValue);
     }
-    });
+  });
 });
 
-function editURL(filterValue, queryText) {
-  switch (filterValue) {
-    case 'activite':
-      url = 'https://recherche-entreprises.api.gouv.fr/search?age=1&per_page=10&section_activite_principale=' + queryText.trim();  break;
+function editURL() {
+  const checkedRadio = document.querySelector('input[name="taille"]:checked');
 
-    case 'taille':
-      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&categorie_entreprise=' + queryText.trim(); break;
-      
+  switch (elements.filter.value) {
+    case 'activite':
+      url = 'https://recherche-entreprises.api.gouv.fr/search?age=1&per_page=10&section_activite_principale=' + elements.query.value.trim(); break;
+
+    case 'nom':
+      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&q=' + elements.query.value.trim(); break;
+
     case 'region':
-      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&region=' + queryText.trim(); break;
+      url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10&region=' + elements.query.value.trim(); break;
     /*https://recherche-entreprises.api.gouv.fr/search?region=[region]&categorie_entreprise=[taille]&section_activite_principale=[activite]&page=[page]&per_page=[per_page]*/
     default:
       url = 'https://recherche-entreprises.api.gouv.fr/search?page=1&per_page=10';
+
+      if(checkedRadio != null){
+      url += '&categorie_entreprise=' + checkedRadio.value;
+      }
   }
+
+  return url;
 }
 
 async function fetchEntreprise(filterValue, queryText) {
@@ -46,7 +67,7 @@ async function fetchEntreprise(filterValue, queryText) {
     }
   });
 
-  editURL(filterValue, queryText);
+  editURL();
 
   const response = await fetch(url);
   const jsonData = await response.json();
@@ -71,7 +92,7 @@ async function fetchEntreprise(filterValue, queryText) {
     clone.getElementById("categorie_entreprise").textContent = tailles[entreprise.categorie_entreprise] || "N/A";
     clone.getElementById("activite_principale").textContent = entreprise.activite_principale || "N/A";
     clone.getElementById("date_creation").textContent = entreprise.date_creation || "N/A";
-
+  
     container.appendChild(clone);
   });
 }
