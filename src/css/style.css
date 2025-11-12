@@ -8,6 +8,11 @@
   outline: none;
 }
 
+.tailleSearch{
+    align-items: center;
+    text-align: center;
+}
+
 #searchZone {
   text-align: center;
   margin-top: 10px;
