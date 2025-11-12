@@ -76,4 +76,3 @@ async function fetchEntreprise(filterValue, queryText) {
   });
 }
 
-

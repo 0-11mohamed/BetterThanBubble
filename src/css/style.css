@@ -1,9 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
-#searchZone{
-    text-align: center;
-    margin-top: 10px;
+#searchZone input[type="search"] {
+  width: 70%;
+  padding: 10px 15px 10px 35px;
+  font-size: 15px;
+  border: 2px solid #0077b6;
+  outline: none;
 }
+
+#searchZone {
+  text-align: center;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#filter {
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 2px solid #0077b6;
+  border-radius: 3px;
+  outline: none;
+  width: 25%;
+  background-color: white;
+  color: #0077b6;
+  cursor: pointer;
+}
+
+#query {
+  width: 70%;
+  padding: 10px 15px 10px 35px;
+  font-size: 15px;
+  border: 2px solid #0077b6;
+  outline: none;
+  border-radius: 3px;
+}
+
 
 #titre{
     font-family: Momo Trust Display;
