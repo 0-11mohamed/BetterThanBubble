@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchEntreprise(filterValue, queryText);
     }
     });
+
+
 });
 
 function editURL(filterValue, queryText) {
@@ -76,3 +78,35 @@ async function fetchEntreprise(filterValue, queryText) {
   });
 }
 
+///////    importation du json
+document.addEventListener('DOMContentLoaded', () => {
+  const importButton = document.getElementById('importButton');
+  const fileInput = document.getElementById('fileInput');
+
+  importButton.addEventListener('click', () => {
+      fileInput.click();
+  });
+
+  fileInput.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+
+      console.log('Fichier JSON ');
+      if (file && file.type === 'application/json') {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+              const fileContent = e.target.result;
+              try {
+
+                  const jsonData = JSON.parse(fileContent);
+                  console.log('Fichier JSON chargé avec succès:', jsonData);
+                  //utiliser ja variable jsonData pour l'import dans la base de donnée
+              } catch (error) {
+                  alert('Erreur lors de l\'analyse du fichier JSON.');
+              }
+          };
+          reader.readAsText(file);
+      } else {
+          alert('Veuillez sélectionner un fichier JSON valide.');
+      }
+  });
+});
