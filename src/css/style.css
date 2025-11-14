@@ -1,16 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
+.flex-col-center{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+body{
+    color:#27272b;
+}
+
 #searchZone input[type="search"] {
   width: 70%;
   padding: 10px 15px 10px 35px;
   font-size: 15px;
-  border: 2px solid #0077b6;
+  border: 2px solid #00aff0;
   outline: none;
 }
 
 .tailleSearch{
-    align-items: center;
-    text-align: center;
+    display: flex;
+
 }
 
 #searchZone {
@@ -21,35 +31,48 @@
   align-items: center;
 }
 
-#filter {
-  padding: 10px 15px;
-  font-size: 15px;
-  border: 2px solid #0077b6;
-  border-radius: 3px;
-  outline: none;
-  width: 25%;
-  background-color: white;
-  color: #0077b6;
-  cursor: pointer;
+#titleZone {
+  display: flex;
+  align-items: center;      
+  justify-content: center;   
+
+  gap: 10px;                  
+  padding-right: 15px;
+  height: 90px;             
+  width: 90vw;
 }
 
-#query {
-  width: 70%;
-  padding: 10px 15px 10px 35px;
-  font-size: 15px;
-  border: 2px solid #0077b6;
-  outline: none;
-  border-radius: 3px;
+#titleZone img {
+  height: 100%;    
+  width: auto;               
+  object-fit: contain;       
 }
-
 
 #titre{
     font-family: Momo Trust Display;
     text-align: center;
     font-weight: bolder;
     font-size: 3rem;
-    margin: 0 auto;
-    margin-bottom: 2rem;
+    margin: 5;
+}
+
+@media (max-width: 768px) {
+  #titre {
+    font-size: 2rem;       
+  }
+}
+
+
+#filter {
+  padding: 10px 15px;
+  font-size: 15px;
+  border: 2px solid #00aff0;
+  border-radius: 3px;
+  outline: none;
+  width: 25%;
+  background-color: white;
+  color: #0077b6;
+  cursor: pointer;
 }
 
 .card{
@@ -63,11 +86,10 @@
 }
 
 .main{
-    border: 2px solid darkcyan;
+    border: 2px solid #00aff0;
     border-radius: 1%;
-    padding: 5px auto;
-    height: 100vh;
-    width: 100vh;
+    padding: 5px auto;  
     align-items: center;
     margin: 0 auto;
+    width: 90vw;
 }

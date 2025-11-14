@@ -9,8 +9,11 @@
         <link rel="icon" href="assets/tabLogo.png"/>
     </head>
     
-    <body>
-        <p id="titre">Recherche Stage</p>
+    <body class="flex-col-center">
+        <div id="titleZone">
+            <img src="./assets/oslogo.png">
+            <p id="titre">Only Stage</p>
+        </div>
 
         <div class="main">
             <div id="searchZone">
@@ -20,11 +23,11 @@
                     <option value="region">Région</option>
                 </select>
 
-                <input type="search" id="query" placeholder="Rechercher...">
+                <input type="search" placeholder="Rechercher...">
             </div>
 
             <div class="tailleSearch">
-                Taille de l'entreprise :
+                <p>Taille de l'entreprise :</p>
                 <label><input type="checkbox" name="taille" value="GE"> Grande</label>
                 <label><input type="checkbox" name="taille" value="ETI"> Intermédiaire</label>
                 <label><input type="checkbox" name="taille" value="MPE"> Petite</label>
