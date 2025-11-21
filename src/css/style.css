@@ -1,95 +1,135 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
-.flex-col-center{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
+/*------------------UTILITAIRES------------------*/
 
-body{
-    color:#27272b;
-}
-
-#searchZone input[type="search"] {
-  width: 70%;
-  padding: 10px 15px 10px 35px;
-  font-size: 15px;
-  border: 2px solid #00aff0;
-  outline: none;
-}
-
-.tailleSearch{
-    display: flex;
-
-}
-
-#searchZone {
-  text-align: center;
-  margin-top: 10px;
+.flex-col {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
+body {
+  color: #27272b;
+  font-family: sans-serif;
+  margin: 0;
+}
+
+/*------------------CONTAINER PRINCIPAL------------------*/
+
+.main {
+  border: 2px solid red;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  box-sizing: border-box;
+}
+
+/*------------------TITRE ET HEADER------------------*/
+
 #titleZone {
   display: flex;
-  align-items: center;      
-  justify-content: center;   
-
-  gap: 10px;                  
-  padding-right: 15px;
-  height: 90px;             
-  width: 90vw;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  height: 90px;
+  width: 100%;
 }
 
 #titleZone img {
-  height: 100%;    
-  width: auto;               
-  object-fit: contain;       
+  height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
-#titre{
-    font-family: Momo Trust Display;
-    text-align: center;
-    font-weight: bolder;
-    font-size: 3rem;
-    margin: 5;
+#titre {
+  font-family: "Momo Trust Display", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 3rem;
+  margin: 0;
 }
+
+/*------------------FILTRES ET RECHERCHE------------------*/
+
+#searchZone{
+  width: 100%;
+}
+
+#searchZone * {
+  max-height: 46px;
+  width: 80%;
+
+  margin: 5px;
+
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 5px;
+
+  text-overflow: ellipsis;
+}
+
+.inputStyle {
+  color: #8a96a3;
+  background: white;
+
+  border-radius: 7px;
+  border: 1px solid #8a96a3;
+  transition: 0.2s ease;
+}
+
+.inputStyle:hover {
+  box-shadow: 0 0 0 1px #8a96a3;
+}
+
+.inputStyle:focus,
+.inputStyle:active {
+  color: #00aff0;
+
+  border-color: #00aff0;
+  box-shadow: 0 0 0 1.5px #00aff0;
+  outline: none;
+}
+
+#zoneFiltres{
+  font-size: 14px;
+  border: solid 2px red;
+}
+
+#filtresTaille *{
+  border: 2px solid red;
+  font-size: 10px;
+  height: 10px;
+  width: auto;
+  accent-color: #8a96a3;
+}
+
+/*------------------CARTES------------------*/
+
+.card {
+  background-color: rgb(247, 247, 228);
+  text-align: center;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/*------------------RESPONSIVE------------------*/
 
 @media (max-width: 768px) {
   #titre {
-    font-size: 2rem;       
+    font-size: 2rem;
   }
-}
 
-
-#filter {
-  padding: 10px 15px;
-  font-size: 15px;
-  border: 2px solid #00aff0;
-  border-radius: 3px;
-  outline: none;
-  width: 25%;
-  background-color: white;
-  color: #0077b6;
-  cursor: pointer;
-}
-
-.card{
-    background-color: rgb(247, 247, 228);
-    align-items: center;
-    margin: 0 auto;
-    text-align: center;
-    margin: 10px auto;
-    padding: 5px;
-
-}
-
-.main{
-    border: 2px solid #00aff0;
-    border-radius: 1%;
-    padding: 5px auto;  
-    align-items: center;
-    margin: 0 auto;
-    width: 90vw;
+  #searchZone input[type="search"] {
+    width: 100%;
+  }
 }
