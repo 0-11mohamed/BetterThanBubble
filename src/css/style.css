@@ -110,16 +110,13 @@ body {
   accent-color: #8a96a3;
 }
 
-/*------------------CARTES------------------*/
-
-.card {
-  background-color: rgb(247, 247, 228);
-  text-align: center;
-  margin: 10px auto;
-  padding: 10px;
-  border-radius: 8px;
-  width: 100%;
-  box-sizing: border-box;
+.card{
+    background-color: rgb(247, 247, 228);
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+    margin: 10px auto;
+    padding: 5px;
 }
 
 /*------------------RESPONSIVE------------------*/
