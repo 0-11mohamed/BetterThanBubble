@@ -23,7 +23,7 @@
                     <option value="region">Région</option>
                 </select>
 
-                <input id="inputRecherche" class="inputStyle" type="search" placeholder="Rechercher...">
+                <input class="inputStyle" type="search" id="query" placeholder="Rechercher...">
             </div>
 
             <div class="tailleSearch">
@@ -36,7 +36,7 @@
             
             <div id="result">
                 <template id="entrepriseTemplate">
-                    <div class="card">
+                    <div class="cardStyle">
                         <p>Nom : <span id="nom_complet"></span></p>
                         <p>Numero SIREN : <span id="siren"></span></p>
                         <p>Taille : <span id="categorie_entreprise"></span></p>
