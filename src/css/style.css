@@ -54,6 +54,13 @@ body {
   font-size: 3rem;
   margin: 0;
 }
+#sousTitre {
+  font-family: "Momo Trust Display", sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
 
 /*------------------FILTRES ET RECHERCHE------------------*/
 
