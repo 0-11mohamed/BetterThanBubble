@@ -6,23 +6,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
     try {
-        $stmt = $db->prepare("SELECT * FROM DUN_COMPTE WHERE COM_EMAIL = :email");
+        $stmt = $db->prepare("SELECT * FROM ONL_COMPTE WHERE COM_EMAIL = :email");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if (!$user) {
-            echo "Email introuvable.";
             exit();
         }
         
-        if ($email === $user['COM_EMAIL'] && $password === $user['COM_MDP']) {
+        if ($email === $user['COM_EMAIL'] && $password === $user['COM_MOT_DE_PASSE']) {
             $_SESSION['user_id'] = $user['COM_ID'];
             $_SESSION['email'] = $user['COM_EMAIL'];
-            $_SESSION['pseudo'] = $user['COM_PSEUDO'];      
+            $_SESSION['prenom'] = $user['COM_PRENOM'];      
+            $_SESSION['nom'] = $user['COM_NOM'];     
             header('Location: home');
             exit;
         } else {
-            echo "Mot de passe incorrect.";
         }
 
     } catch (PDOException $e) {
@@ -30,5 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
 } else {
-    echo "Méthode de requête non autorisée.";
 }

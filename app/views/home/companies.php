@@ -1,4 +1,4 @@
-<?php include(ROOT_DIR . 'app/views/includes/header.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
 
 <div id="searchZone" class="flex-row">
     <select id="filter" class="inputStyle">
@@ -30,4 +30,5 @@
     </template>
 </div>
 
-<?php include(ROOT_DIR . 'app/views/includes/footer.php'); ?>
+<script src="../../../public/script/script.js"></script>
+<?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>

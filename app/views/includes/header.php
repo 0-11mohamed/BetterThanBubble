@@ -16,8 +16,15 @@
 
             <div id="menubar">
                 <a class="inputStyle" href="home">Accueil</a>
-                <a class="inputStyle" href="companies">Entreprises</a>
-                <a class="inputStyle" href="about">A propos</a>
+                <?php 
+                if(isset($_SESSION['user_id'])){
+                    echo'<a class="inputStyle" href="companies">Entreprises</a>';
+                    echo'<a class="inputStyle" href="logoff">Deconnecter</a>';
+                }
+                else{
+                    echo '<a class="inputStyle" href="login">Se connecter</a>';
+                }
+                 ?>
             </div>
     </header>
     <main>

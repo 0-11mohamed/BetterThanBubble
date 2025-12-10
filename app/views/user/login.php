@@ -1,4 +1,4 @@
-<?php include(ROOT_DIR . 'app/views/includes/header.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
 
     <section>
         <div class="container">
@@ -22,3 +22,5 @@
             </a>
         </div>
     </section>
+
+    <?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>

@@ -1,4 +1,4 @@
-<?php include(ROOT_DIR . 'app/views/includes/header.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
 <section>
 
     <h2>Profil</h2>
@@ -10,4 +10,4 @@
     </div>
 
 </section>
-<?php include(ROOT_DIR . 'app/views/includes/footer.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>

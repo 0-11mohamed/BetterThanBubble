@@ -4,15 +4,19 @@
     $root = '/DungeonXplorer';
 ?>
 
-<?php include(ROOT_DIR . 'app/views/includes/header.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
 
 <div class="container">
     <h2>Créer un compte</h2>
     <?php if ($message) echo "<p style='color:red;'>$message</p>"; ?>
     <form action="register" method="post">
         <div class="form-group">
-            <label for="pseudo">Pseudo :</label>
-            <input type="text" id="pseudo" name="pseudo" required>
+            <label for="prenom">prenom :</label>
+            <input type="text" id="prenom" name="prenom" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">nom :</label>
+            <input type="text" id="nom" name="nom" required>
         </div>
         <div class="form-group">
             <label for="email">Adresse e-mail* :</label>
@@ -26,9 +30,9 @@
         <button type="submit" class="submit-btn">Créer un compte</button>
     </form>
     <p>Deja un compte ?</p>
-    <a href="login.php">
+    <a href="login">
         Se connecter
     </a>
 </div>
 
-<?php include(ROOT_DIR . 'app/views/includes/footer.php'); ?>
+<?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>

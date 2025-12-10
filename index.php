@@ -5,11 +5,6 @@ session_start();
 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 $url = rtrim($url, '/');
 $url = explode('/', $url);
-/*
-echo("<br>Url:</b><br>");
-var_dump($url);
-echo("<br><br>");
-*/
 
 define('ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
@@ -23,6 +18,7 @@ echo("<br>Session Data:</b><br>");
 var_dump($_SESSION);
 echo("<br><br>");
 */
+
 
 switch (true) {
     //---------------PAGES PRINCIPALES--------------------//
