@@ -21,7 +21,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <p id="titre">Only Stage</p>
         </div>
         
-         <?php 
+        <?php 
         include_once 'src/php/Navbar.php' ;
         ?>
 

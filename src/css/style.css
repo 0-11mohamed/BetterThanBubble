@@ -165,3 +165,38 @@ body {
     width: 100%;
   }
 }
+
+/*------------------NAVBAR------------------*/
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav-links a, .nav-links span {
+  text-decoration: none;
+  color: #27272b;
+  font-weight: 600;
+}
+
+.nav-left {
+  font-size: 1.2rem;
+}
+
+.nav-right {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
