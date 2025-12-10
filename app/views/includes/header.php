@@ -8,38 +8,16 @@
 </head>
 <body>
     <header>
-            <div class="flex-row">         
-                <a id="logoImg" href="home">
-                    <picture>
-                        <source media="(max-width: 768px)" srcset="public/img/logo/dungeonLogoMinLight.png">
-                        <img src="public/img/logo/dungeonLogoFullLight.png" alt="Logo" style="height:34px; width:auto;">
-                    </picture>            
-                </a>
-                <a class="button flex-row" href="home">
-                    <img src="public/img/icons/home.png" alt="Logo" style="height:34px; width:auto;">
-                    <p>Accueil</p>
-                </a>
-                <a class="button flex-row" href="decouvrir">
-                    <img src="public/img/icons/compass.png" alt="Logo" style="height:34px; width:auto;">
-                    <p>Decouvrir</p>
-                </a>
+            <div id="titleZone">
+                <img src="public/img/logo/oslogo.png">
+                <p id="titre">Only Stage</p>
             </div>
-            <div class="flex-row">
-                <a class="button flex-row" href="about">
-                    <img src="public/img/icons/info.png" alt="Logo" style="height:34px; width:auto;">
-                    <p>A propos</p>
-                </a>
-                <?php if(!isset($_SESSION['user_id'])): ?>
-                    <a class="button flex-row" href="login">
-                        <img src="public/img/icons/account.png" alt="Logo" style="height:34px; width:auto;">
-                        <p>Se connecter</p>
-                    </a>
-                <?php else: ?>
-                    <a class="button flex-row" href="profile">
-                        <img src="public/img/icons/account.png" alt="Logo" style="height:34px; width:auto;">
-                        <?= htmlspecialchars($_SESSION['pseudo']); ?>
-                    </a>
-                <?php endif; ?>
+            <p id="sousTitre">Votre plateforme de recherche de stage!</p>
+
+            <div id="menubar">
+                <a class="inputStyle" href="home">Accueil</a>
+                <a class="inputStyle" href="companies">Entreprises</a>
+                <a class="inputStyle" href="about">A propos</a>
             </div>
     </header>
     <main>

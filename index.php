@@ -5,13 +5,16 @@ session_start();
 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 $url = rtrim($url, '/');
 $url = explode('/', $url);
+/*
 echo("<br>Url:</b><br>");
 var_dump($url);
 echo("<br><br>");
+*/
 
 define('ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require __DIR__ . '/app/core/config.php';
+/*
 echo("<br>Connexion:</b><br>");
 var_dump($db);
 echo("<br><br>");
@@ -19,6 +22,7 @@ echo("<br><br>");
 echo("<br>Session Data:</b><br>");
 var_dump($_SESSION);
 echo("<br><br>");
+*/
 
 switch (true) {
     //---------------PAGES PRINCIPALES--------------------//
@@ -29,11 +33,11 @@ switch (true) {
     case ($url[0] === 'home'):
         require ROOT_DIR . 'app/views/home/home.php';
         exit;
-    case ($url[0] === 'decouvrir'):
-        require ROOT_DIR . 'app/views/home/discover.php';
-        exit;
     case ($url[0] === 'about'):
         require ROOT_DIR . 'app/views/home/about.php';
+        exit;
+    case ($url[0] === 'companies'):
+        require ROOT_DIR . 'app/views/home/companies.php';
         exit;
     case ($url[0] === 'login'):
         require ROOT_DIR . 'app/views/user/login.php';
