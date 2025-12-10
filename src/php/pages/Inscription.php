@@ -1,39 +1,38 @@
 <?php
-include "../connexion.php";
+session_start();
+$message = $_SESSION['message'] ?? '';
+unset($_SESSION['message']); // on vide le message après affichage
+?>
+<!DOCTYPE html>
+<html lang="fr">
 
-$com_pseudo =isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
-$com_email  =isset($_POST['email']) ? trim($_POST['email']) : '';
-$com_mdp    =isset($_POST['password']) ? trim($_POST['password']) : '';
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Créer un compte</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
 
-if (empty($com_pseudo) || empty($com_email) || empty($com_mdp) ) {
-    echo "<script>alert('Veuillez remplir tous les champs obligatoires.'); window.history.back();</script>";
-    exit();
-}
-
-//$cli_mdp_hache = password_hash($cli_mdp, PASSWORD_DEFAULT);
-
-try{
-    $stmtCheck = $db->prepare("SELECT COUNT(*) FROM COMPTE WHERE COM_EMAIL = :email");
-    $stmtCheck->execute([':email' => $com_email]);
-    if ($stmtCheck->fetchColumn() > 0) {
-        echo "<script>alert('Cette adresse e-mail est déjà utilisée.'); window.history.back();</script>";
-        exit();
-    }
-
-
-    $stmt = $db->prepare("INSERT INTO DUN_COMPTE (COM_ID, COM_PSEUDO, COM_EMAIL, COM_MDP) VALUES (null,:pseudo, :email, :password)");
-    $stmt->execute([
-        ':pseudo' => $com_pseudo,
-        ':email' => $com_email,
-        ':password' => $com_mdp
-    ]);
-
-    $_SESSION['user_id'] = $db->lastInsertId();
-    $_SESSION['pseudo'] = $com_pseudo;
-    $_SESSION['email'] = $com_email;
-
-    header('Location: ../../index.php');
-    exit();
-}catch (PDOException $e) {
-        die("Erreur de connexion : " . $e->getMessage());
-}
+<body class="compte">
+    <div class="container">
+        <h2>Créer un compte</h2>
+        <?php if ($message) echo "<p style='color:red;'>$message</p>"; ?>
+        <form action="Inscrire.php" method="post">
+            <div class="form-group">
+                <label for="pseudo">Pseudo :</label>
+                <input type="text" id="pseudo" name="pseudo" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse e-mail* :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Mot de passe* :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <p>* obligatoire</p>
+            <button type="submit" class="submit-btn">Créer un compte</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,38 +1,31 @@
-<?php
-session_start();
-include_once '../connexion.php';
+<!DOCTYPE html>
+<html lang="fr">
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Simple</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
 
-    $email = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $password = isset($_POST['password']) ? $_POST['password'] : '';
+<body class="compte">
+   
+    <div class="container">
+        <h2>Se connecter</h2>
+        <form action="confirmationConnexion.php" method="post">
+            <div class="form-group">
+                <label for="email">Adresse e-mail :</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-    try {
-        $stmt = $db->prepare("SELECT * FROM COMPTE WHERE COM_EMAIL = :email");
-        $stmt->execute([':email' => $email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if (!$user) {
-            echo "Email introuvable.";
-            exit();
-        }
-        
-        if ($email === $user['COM_EMAIL'] && $password === $user['COM_MDP']) {
-            $_SESSION['user_id'] = $user['COM_ID'];
-            $_SESSION['email'] = $user['COM_EMAIL'];
-            $_SESSION['prenom'] = $user['COM_PRENOM'];
-            //echo "Connexion réussit";
-            header('Location: ../../index.php');
-            exit();
-        } else {
-            echo "Mot de passe incorrect.";
-        }
+            <div class="form-group">
+                <label for="password">Mot de passe :</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-    } catch (PDOException $e) {
-        die("Erreur de connexion : " . $e->getMessage());
-    }
 
-} else {
-    echo "Méthode de requête non autorisée.";
-}
-?>
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+    </div>
+</body>
