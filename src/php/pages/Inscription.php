@@ -1,5 +1,5 @@
 <?php
-include "connexion.php";
+include "../connexion.php";
 
 $com_pseudo =isset($_POST['pseudo']) ? trim($_POST['pseudo']) : '';
 $com_email  =isset($_POST['email']) ? trim($_POST['email']) : '';
