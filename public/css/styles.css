@@ -154,6 +154,12 @@ body {
   outline: none;
 }
 
+/*--------------------FOOTER--------------------*/
+
+footer{
+  background-color: #00aff0;
+}
+
 /*------------------RESPONSIVE------------------*/
 
 @media (max-width: 768px) {
