@@ -1,7 +1,6 @@
 <?php
     $message = $_SESSION['message'] ?? '';
     unset($_SESSION['message']); 
-    $root = '/DungeonXplorer';
 ?>
 
 <?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
