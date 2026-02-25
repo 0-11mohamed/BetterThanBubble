@@ -1,6 +1,6 @@
 <?php
-    $db_username   = "onlystages";
-    $db_password   = "uyi4Hai8ad8Ohgh3";
+    $db_username   = "root";
+    $db_password   = "";
     $dbname     = "onlystages_bd";
     $host = "localhost";
 

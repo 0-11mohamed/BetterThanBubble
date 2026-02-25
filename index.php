@@ -6,6 +6,16 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 $url = rtrim($url, '/');
 $url = explode('/', $url);
 
+if(!isset($_SESSION['typecompte'])){
+    $_SESSION['typecompte']=0;
+}
+
+/*
+echo("<br>Url:</b><br>");
+var_dump($url);
+echo("<br><br>");
+*/
+
 define('ROOT_DIR', __DIR__ . DIRECTORY_SEPARATOR);
 
 require __DIR__ . '/app/core/config.php';
@@ -19,7 +29,6 @@ var_dump($_SESSION);
 echo("<br><br>");
 */
 
-
 switch (true) {
     //---------------PAGES PRINCIPALES--------------------//
 
@@ -29,11 +38,11 @@ switch (true) {
     case ($url[0] === 'home'):
         require ROOT_DIR . 'app/views/home/home.php';
         exit;
-    case ($url[0] === 'about'):
-        require ROOT_DIR . 'app/views/home/about.php';
-        exit;
     case ($url[0] === 'companies'):
         require ROOT_DIR . 'app/views/home/companies.php';
+        exit;
+    case ($url[0] === 'stages'):
+        require ROOT_DIR . 'app/views/home/stages.php';
         exit;
     case ($url[0] === 'login'):
         require ROOT_DIR . 'app/views/user/login.php';
@@ -41,8 +50,8 @@ switch (true) {
     case ($url[0] === 'signup'):
         require ROOT_DIR . 'app/views/user/signup.php';
         exit;
-    case ($url[0] === 'profile'):
-        require ROOT_DIR . 'app/views/user/profile.php';
+    case (($url[0] === 'import') && ($_SESSION['typecompte']===3)):
+        require ROOT_DIR . 'app/views/home/importation.php';
         exit;
 
     //---------------CONNEXION ET CORE PHP--------------------//
@@ -58,6 +67,16 @@ switch (true) {
         exit;
     case ($url[0] === 'register'):
         require ROOT_DIR . 'app/core/register.php';
+        exit;
+
+    case ($url[0] === 'importationBDD'):
+        require_once ROOT_DIR . 'app/core/importationBDD.php';
+        exit;
+    case ($url[0] === 'insertion'):
+        require_once ROOT_DIR . 'app/core/insertion.php';
+        exit;
+    case ($url[0] === 'stageController'):
+        require_once ROOT_DIR . 'app/core/stageController.php';
         exit;
     
 

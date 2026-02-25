@@ -1,8 +1,13 @@
-<?php include_once(ROOT_DIR . 'app/views/includes/header.php'); ?>
-
+<?php include(ROOT_DIR . 'app/views/includes/header.php'); ?>
     <section>
         <div class="container">
             <h2>Se connecter</h2>
+            <?php if (isset($_SESSION['error_message'])): ?>
+                <div style="color: red; margin-bottom: 15px;">
+                    <?php echo htmlspecialchars($_SESSION['error_message']); ?>
+                </div>
+                <?php unset($_SESSION['error_message']); ?>
+            <?php endif;?>
             <form action="confirmLogin" method="post">
                 <div class="form-group">
                     <label for="email">Adresse e-mail :</label>
@@ -22,5 +27,3 @@
             </a>
         </div>
     </section>
-
-    <?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>

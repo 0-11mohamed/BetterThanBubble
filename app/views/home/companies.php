@@ -4,7 +4,7 @@
     <select id="filter" class="inputStyle">
         <option value="nom">Nom d'entreprise</option>
         <option value="activite">Domaine d'activité</option>
-        <option value="region">Région</option>
+        <option value="departement">Département</option>
     </select>
 
     <input class="inputStyle" type="search" id="query" placeholder="Rechercher...">
@@ -14,7 +14,7 @@
     <p>Taille de l'entreprise :</p>
     <label><input type="radio" name="taille" value="GE"> Grande</label>
     <label><input type="radio" name="taille" value="ETI"> Intermédiaire</label>
-    <label><input type="radio" name="taille" value="MPE"> Petite</label>
+    <label><input type="radio" name="taille" value="PME"> Petite</label>
 </div>
 
 
@@ -24,11 +24,9 @@
             <p>Nom : <span id="nom_complet"></span></p>
             <p>Numero SIREN : <span id="siren"></span></p>
             <p>Taille : <span id="categorie_entreprise"></span></p>
-            <p>Activité principale : <span id="activite_principale"></span></p>
             <p>Date de création : <span id="date_creation"></span></p>
         </div>
     </template>
 </div>
 
-<script src="../../../public/script/script.js"></script>
 <?php include_once(ROOT_DIR . 'app/views/includes/footer.php'); ?>
